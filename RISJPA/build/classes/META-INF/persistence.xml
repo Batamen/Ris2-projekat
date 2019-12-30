@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="RISJPA">
+		<class>model.Dom</class>
+		<class>model.Komentar</class>
+		<class>model.Planina</class>
+		<class>model.Planinar</class>
+		<class>model.Portal</class>
+		<class>model.Poseta</class>
+		<class>model.Rezervacija</class>
+		<class>model.Slikaportal</class>
+		<class>model.Slikaznamenitost</class>
+		<class>model.Staza</class>
+		<class>model.Znamenitost</class>
+	</persistence-unit>
+</persistence>
