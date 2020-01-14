@@ -3,14 +3,15 @@
 	<persistence-unit name="RISJPA" transaction-type="RESOURCE_LOCAL">
 		<class>model.Dom</class>
 		<class>model.Komentar</class>
+		<class>model.Mapa</class>
 		<class>model.Planina</class>
 		<class>model.Planinar</class>
 		<class>model.Portal</class>
-		<class>model.Portalslika</class>
-		<class>model.Poseta</class>
 		<class>model.Rezervacija</class>
 		<class>model.Slikaznamenitost</class>
+		<class>model.Slikeportal</class>
 		<class>model.Staza</class>
+		<class>model.Termin</class>
 		<class>model.Znamenitost</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/mydb"/>

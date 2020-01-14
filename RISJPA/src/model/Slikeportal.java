@@ -5,17 +5,17 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the portalslika database table.
+ * The persistent class for the slikeportal database table.
  * 
  */
 @Entity
-@NamedQuery(name="Portalslika.findAll", query="SELECT p FROM Portalslika p")
-public class Portalslika implements Serializable {
+@NamedQuery(name="Slikeportal.findAll", query="SELECT s FROM Slikeportal s")
+public class Slikeportal implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idPortalSlika;
+	private int idSlikePortal;
 
 	@Lob
 	private String path;
@@ -24,15 +24,15 @@ public class Portalslika implements Serializable {
 	@ManyToOne
 	private Portal portal;
 
-	public Portalslika() {
+	public Slikeportal() {
 	}
 
-	public int getIdPortalSlika() {
-		return this.idPortalSlika;
+	public int getIdSlikePortal() {
+		return this.idSlikePortal;
 	}
 
-	public void setIdPortalSlika(int idPortalSlika) {
-		this.idPortalSlika = idPortalSlika;
+	public void setIdSlikePortal(int idSlikePortal) {
+		this.idSlikePortal = idSlikePortal;
 	}
 
 	public String getPath() {

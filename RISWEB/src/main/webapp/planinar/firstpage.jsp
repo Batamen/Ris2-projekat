@@ -5,12 +5,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${!empty planinar }">
-		<h3>Welcome ${planinar.ime } ${planinar.prezime }</h3>
-		<a href="/Ris/PlaninarController/Planinar">hej</a>
-	</c:if>
+	<div class="w3-container w3-teal w3-center">
+		<c:if test="${!empty planinar }">
+			<h1 class="w3-opacity"><b>Dobro dosao ${planinar.ime } ${planinar.prezime }</b></h1>
+		</c:if>
+	</div>
+	<div class="w3-container w3-light-blue w3-center">
+	<pre><a href="/Ris/PlaninarController/getPlanine">Planine</a>				<a href=#>IZABERI</a>				<a href=#>IZABERI</a>				<a href=#>IZABERI</a>				<a href=#>IZABERI</a></pre>
+	</div>
 </body>
 </html>

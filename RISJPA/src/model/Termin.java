@@ -6,40 +6,38 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the poseta database table.
+ * The persistent class for the termin database table.
  * 
  */
 @Entity
-@NamedQuery(name="Poseta.findAll", query="SELECT p FROM Poseta p")
-public class Poseta implements Serializable {
+@NamedQuery(name="Termin.findAll", query="SELECT t FROM Termin t")
+public class Termin implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idPoseta;
+	private int idTermin;
 
 	@Temporal(TemporalType.DATE)
 	private Date datum;
 
 	//bi-directional many-to-one association to Planinar
 	@ManyToOne
-	@JoinColumn(name="idPlaninar")
 	private Planinar planinar;
 
 	//bi-directional many-to-one association to Znamenitost
 	@ManyToOne
-	@JoinColumn(name="idZnamenitosti")
 	private Znamenitost znamenitost;
 
-	public Poseta() {
+	public Termin() {
 	}
 
-	public int getIdPoseta() {
-		return this.idPoseta;
+	public int getIdTermin() {
+		return this.idTermin;
 	}
 
-	public void setIdPoseta(int idPoseta) {
-		this.idPoseta = idPoseta;
+	public void setIdTermin(int idTermin) {
+		this.idTermin = idTermin;
 	}
 
 	public Date getDatum() {

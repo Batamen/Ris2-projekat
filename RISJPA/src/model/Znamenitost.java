@@ -16,48 +16,39 @@ public class Znamenitost implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idZnamenitosti;
-
-	@Lob
-	private String komentari;
+	private int idZnamenitost;
 
 	@Lob
 	private String opis;
+
+	@Lob
+	private String tip;
 
 	//bi-directional many-to-one association to Komentar
 	@OneToMany(mappedBy="znamenitost")
 	private List<Komentar> komentars;
 
-	//bi-directional many-to-one association to Poseta
-	@OneToMany(mappedBy="znamenitost")
-	private List<Poseta> posetas;
-
 	//bi-directional many-to-one association to Slikaznamenitost
 	@OneToMany(mappedBy="znamenitost")
 	private List<Slikaznamenitost> slikaznamenitosts;
 
+	//bi-directional many-to-one association to Termin
+	@OneToMany(mappedBy="znamenitost")
+	private List<Termin> termins;
+
 	//bi-directional many-to-one association to Staza
 	@ManyToOne
-	@JoinColumn(name="idStaza")
 	private Staza staza;
 
 	public Znamenitost() {
 	}
 
-	public int getIdZnamenitosti() {
-		return this.idZnamenitosti;
+	public int getIdZnamenitost() {
+		return this.idZnamenitost;
 	}
 
-	public void setIdZnamenitosti(int idZnamenitosti) {
-		this.idZnamenitosti = idZnamenitosti;
-	}
-
-	public String getKomentari() {
-		return this.komentari;
-	}
-
-	public void setKomentari(String komentari) {
-		this.komentari = komentari;
+	public void setIdZnamenitost(int idZnamenitost) {
+		this.idZnamenitost = idZnamenitost;
 	}
 
 	public String getOpis() {
@@ -66,6 +57,14 @@ public class Znamenitost implements Serializable {
 
 	public void setOpis(String opis) {
 		this.opis = opis;
+	}
+
+	public String getTip() {
+		return this.tip;
+	}
+
+	public void setTip(String tip) {
+		this.tip = tip;
 	}
 
 	public List<Komentar> getKomentars() {
@@ -90,28 +89,6 @@ public class Znamenitost implements Serializable {
 		return komentar;
 	}
 
-	public List<Poseta> getPosetas() {
-		return this.posetas;
-	}
-
-	public void setPosetas(List<Poseta> posetas) {
-		this.posetas = posetas;
-	}
-
-	public Poseta addPoseta(Poseta poseta) {
-		getPosetas().add(poseta);
-		poseta.setZnamenitost(this);
-
-		return poseta;
-	}
-
-	public Poseta removePoseta(Poseta poseta) {
-		getPosetas().remove(poseta);
-		poseta.setZnamenitost(null);
-
-		return poseta;
-	}
-
 	public List<Slikaznamenitost> getSlikaznamenitosts() {
 		return this.slikaznamenitosts;
 	}
@@ -132,6 +109,28 @@ public class Znamenitost implements Serializable {
 		slikaznamenitost.setZnamenitost(null);
 
 		return slikaznamenitost;
+	}
+
+	public List<Termin> getTermins() {
+		return this.termins;
+	}
+
+	public void setTermins(List<Termin> termins) {
+		this.termins = termins;
+	}
+
+	public Termin addTermin(Termin termin) {
+		getTermins().add(termin);
+		termin.setZnamenitost(this);
+
+		return termin;
+	}
+
+	public Termin removeTermin(Termin termin) {
+		getTermins().remove(termin);
+		termin.setZnamenitost(null);
+
+		return termin;
 	}
 
 	public Staza getStaza() {

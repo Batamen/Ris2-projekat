@@ -18,17 +18,16 @@ public class Dom implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idDom;
 
-	@Lob
-	private String mesto;
+	private int kapacitet;
 
 	@Lob
 	private String naziv;
 
-	private int slobodnaMesta;
+	@Lob
+	private String opis;
 
 	//bi-directional many-to-one association to Planina
 	@ManyToOne
-	@JoinColumn(name="idPlanina")
 	private Planina planina;
 
 	//bi-directional many-to-one association to Rezervacija
@@ -46,12 +45,12 @@ public class Dom implements Serializable {
 		this.idDom = idDom;
 	}
 
-	public String getMesto() {
-		return this.mesto;
+	public int getKapacitet() {
+		return this.kapacitet;
 	}
 
-	public void setMesto(String mesto) {
-		this.mesto = mesto;
+	public void setKapacitet(int kapacitet) {
+		this.kapacitet = kapacitet;
 	}
 
 	public String getNaziv() {
@@ -62,12 +61,12 @@ public class Dom implements Serializable {
 		this.naziv = naziv;
 	}
 
-	public int getSlobodnaMesta() {
-		return this.slobodnaMesta;
+	public String getOpis() {
+		return this.opis;
 	}
 
-	public void setSlobodnaMesta(int slobodnaMesta) {
-		this.slobodnaMesta = slobodnaMesta;
+	public void setOpis(String opis) {
+		this.opis = opis;
 	}
 
 	public Planina getPlanina() {
