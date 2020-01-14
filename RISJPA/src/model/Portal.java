@@ -16,34 +16,28 @@ public class Portal implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idPortal;
+	private int idIkustva;
 
 	@Lob
 	private String iskustva;
 
-	//bi-directional many-to-one association to Planina
-	@ManyToOne
-	@JoinColumn(name="idPlanina")
-	private Planina planina;
-
 	//bi-directional many-to-one association to Planinar
 	@ManyToOne
-	@JoinColumn(name="idPlaninar")
 	private Planinar planinar;
 
-	//bi-directional many-to-one association to Portalslika
+	//bi-directional many-to-one association to Slikeportal
 	@OneToMany(mappedBy="portal")
-	private List<Portalslika> portalslikas;
+	private List<Slikeportal> slikeportals;
 
 	public Portal() {
 	}
 
-	public int getIdPortal() {
-		return this.idPortal;
+	public int getIdIkustva() {
+		return this.idIkustva;
 	}
 
-	public void setIdPortal(int idPortal) {
-		this.idPortal = idPortal;
+	public void setIdIkustva(int idIkustva) {
+		this.idIkustva = idIkustva;
 	}
 
 	public String getIskustva() {
@@ -54,14 +48,6 @@ public class Portal implements Serializable {
 		this.iskustva = iskustva;
 	}
 
-	public Planina getPlanina() {
-		return this.planina;
-	}
-
-	public void setPlanina(Planina planina) {
-		this.planina = planina;
-	}
-
 	public Planinar getPlaninar() {
 		return this.planinar;
 	}
@@ -70,26 +56,26 @@ public class Portal implements Serializable {
 		this.planinar = planinar;
 	}
 
-	public List<Portalslika> getPortalslikas() {
-		return this.portalslikas;
+	public List<Slikeportal> getSlikeportals() {
+		return this.slikeportals;
 	}
 
-	public void setPortalslikas(List<Portalslika> portalslikas) {
-		this.portalslikas = portalslikas;
+	public void setSlikeportals(List<Slikeportal> slikeportals) {
+		this.slikeportals = slikeportals;
 	}
 
-	public Portalslika addPortalslika(Portalslika portalslika) {
-		getPortalslikas().add(portalslika);
-		portalslika.setPortal(this);
+	public Slikeportal addSlikeportal(Slikeportal slikeportal) {
+		getSlikeportals().add(slikeportal);
+		slikeportal.setPortal(this);
 
-		return portalslika;
+		return slikeportal;
 	}
 
-	public Portalslika removePortalslika(Portalslika portalslika) {
-		getPortalslikas().remove(portalslika);
-		portalslika.setPortal(null);
+	public Slikeportal removeSlikeportal(Slikeportal slikeportal) {
+		getSlikeportals().remove(slikeportal);
+		slikeportal.setPortal(null);
 
-		return portalslika;
+		return slikeportal;
 	}
 
 }

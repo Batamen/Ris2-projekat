@@ -8,6 +8,6 @@ import model.Planinar;
 
 public interface PlaninarRepository extends JpaRepository<Planinar, Integer> {
 
-	@Query("SELECT p FROM Planinar p WHERE p.ime=:ime and p.prezime=:prezime")
-	public Planinar findByImePrezime(@Param("ime")String ime,@Param("prezime") String prezime);
+	@Query("SELECT p FROM Planinar p WHERE p.ime=:ime and p.clanskibroj=:clanskibroj")
+	public Planinar findByImeClanskiBr(@Param("ime")String ime,@Param("clanskibroj") String clanskibroj);
 }

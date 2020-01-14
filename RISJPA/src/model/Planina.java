@@ -18,20 +18,14 @@ public class Planina implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idPlanina;
 
-	private int idPortal;
+	@Lob
+	private String ime;
 
 	private int mnv;
-
-	@Lob
-	private String naziv;
 
 	//bi-directional many-to-one association to Dom
 	@OneToMany(mappedBy="planina")
 	private List<Dom> doms;
-
-	//bi-directional many-to-one association to Portal
-	@OneToMany(mappedBy="planina")
-	private List<Portal> portals;
 
 	//bi-directional many-to-one association to Staza
 	@OneToMany(mappedBy="planina")
@@ -48,12 +42,12 @@ public class Planina implements Serializable {
 		this.idPlanina = idPlanina;
 	}
 
-	public int getIdPortal() {
-		return this.idPortal;
+	public String getIme() {
+		return this.ime;
 	}
 
-	public void setIdPortal(int idPortal) {
-		this.idPortal = idPortal;
+	public void setIme(String ime) {
+		this.ime = ime;
 	}
 
 	public int getMnv() {
@@ -62,14 +56,6 @@ public class Planina implements Serializable {
 
 	public void setMnv(int mnv) {
 		this.mnv = mnv;
-	}
-
-	public String getNaziv() {
-		return this.naziv;
-	}
-
-	public void setNaziv(String naziv) {
-		this.naziv = naziv;
 	}
 
 	public List<Dom> getDoms() {
@@ -92,28 +78,6 @@ public class Planina implements Serializable {
 		dom.setPlanina(null);
 
 		return dom;
-	}
-
-	public List<Portal> getPortals() {
-		return this.portals;
-	}
-
-	public void setPortals(List<Portal> portals) {
-		this.portals = portals;
-	}
-
-	public Portal addPortal(Portal portal) {
-		getPortals().add(portal);
-		portal.setPlanina(this);
-
-		return portal;
-	}
-
-	public Portal removePortal(Portal portal) {
-		getPortals().remove(portal);
-		portal.setPlanina(null);
-
-		return portal;
 	}
 
 	public List<Staza> getStazas() {

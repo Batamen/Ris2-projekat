@@ -23,12 +23,10 @@ public class Rezervacija implements Serializable {
 
 	//bi-directional many-to-one association to Dom
 	@ManyToOne
-	@JoinColumn(name="idDom")
 	private Dom dom;
 
 	//bi-directional many-to-one association to Planinar
 	@ManyToOne
-	@JoinColumn(name="idPlaninar")
 	private Planinar planinar;
 
 	public Rezervacija() {

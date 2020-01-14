@@ -19,7 +19,12 @@ public class Planinar implements Serializable {
 	private int idPlaninar;
 
 	@Lob
+	private String clanskibroj;
+
+	@Lob
 	private String ime;
+
+	private int novac;
 
 	@Lob
 	private String prezime;
@@ -32,13 +37,13 @@ public class Planinar implements Serializable {
 	@OneToMany(mappedBy="planinar")
 	private List<Portal> portals;
 
-	//bi-directional many-to-one association to Poseta
-	@OneToMany(mappedBy="planinar")
-	private List<Poseta> posetas;
-
 	//bi-directional many-to-one association to Rezervacija
 	@OneToMany(mappedBy="planinar")
 	private List<Rezervacija> rezervacijas;
+
+	//bi-directional many-to-one association to Termin
+	@OneToMany(mappedBy="planinar")
+	private List<Termin> termins;
 
 	public Planinar() {
 	}
@@ -51,12 +56,28 @@ public class Planinar implements Serializable {
 		this.idPlaninar = idPlaninar;
 	}
 
+	public String getClanskibroj() {
+		return this.clanskibroj;
+	}
+
+	public void setClanskibroj(String clanskibroj) {
+		this.clanskibroj = clanskibroj;
+	}
+
 	public String getIme() {
 		return this.ime;
 	}
 
 	public void setIme(String ime) {
 		this.ime = ime;
+	}
+
+	public int getNovac() {
+		return this.novac;
+	}
+
+	public void setNovac(int novac) {
+		this.novac = novac;
 	}
 
 	public String getPrezime() {
@@ -111,28 +132,6 @@ public class Planinar implements Serializable {
 		return portal;
 	}
 
-	public List<Poseta> getPosetas() {
-		return this.posetas;
-	}
-
-	public void setPosetas(List<Poseta> posetas) {
-		this.posetas = posetas;
-	}
-
-	public Poseta addPoseta(Poseta poseta) {
-		getPosetas().add(poseta);
-		poseta.setPlaninar(this);
-
-		return poseta;
-	}
-
-	public Poseta removePoseta(Poseta poseta) {
-		getPosetas().remove(poseta);
-		poseta.setPlaninar(null);
-
-		return poseta;
-	}
-
 	public List<Rezervacija> getRezervacijas() {
 		return this.rezervacijas;
 	}
@@ -153,6 +152,28 @@ public class Planinar implements Serializable {
 		rezervacija.setPlaninar(null);
 
 		return rezervacija;
+	}
+
+	public List<Termin> getTermins() {
+		return this.termins;
+	}
+
+	public void setTermins(List<Termin> termins) {
+		this.termins = termins;
+	}
+
+	public Termin addTermin(Termin termin) {
+		getTermins().add(termin);
+		termin.setPlaninar(this);
+
+		return termin;
+	}
+
+	public Termin removeTermin(Termin termin) {
+		getTermins().remove(termin);
+		termin.setPlaninar(null);
+
+		return termin;
 	}
 
 }

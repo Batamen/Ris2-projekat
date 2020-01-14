@@ -19,16 +19,17 @@ public class Staza implements Serializable {
 	private int idStaza;
 
 	@Lob
-	private String mapa;
-
-	@Lob
 	private String opis;
 
-	private int tezina;
+	@Lob
+	private String tezina;
+
+	//bi-directional many-to-one association to Mapa
+	@OneToMany(mappedBy="staza")
+	private List<Mapa> mapas;
 
 	//bi-directional many-to-one association to Planina
 	@ManyToOne
-	@JoinColumn(name="idPlanina")
 	private Planina planina;
 
 	//bi-directional many-to-one association to Znamenitost
@@ -46,14 +47,6 @@ public class Staza implements Serializable {
 		this.idStaza = idStaza;
 	}
 
-	public String getMapa() {
-		return this.mapa;
-	}
-
-	public void setMapa(String mapa) {
-		this.mapa = mapa;
-	}
-
 	public String getOpis() {
 		return this.opis;
 	}
@@ -62,12 +55,34 @@ public class Staza implements Serializable {
 		this.opis = opis;
 	}
 
-	public int getTezina() {
+	public String getTezina() {
 		return this.tezina;
 	}
 
-	public void setTezina(int tezina) {
+	public void setTezina(String tezina) {
 		this.tezina = tezina;
+	}
+
+	public List<Mapa> getMapas() {
+		return this.mapas;
+	}
+
+	public void setMapas(List<Mapa> mapas) {
+		this.mapas = mapas;
+	}
+
+	public Mapa addMapa(Mapa mapa) {
+		getMapas().add(mapa);
+		mapa.setStaza(this);
+
+		return mapa;
+	}
+
+	public Mapa removeMapa(Mapa mapa) {
+		getMapas().remove(mapa);
+		mapa.setStaza(null);
+
+		return mapa;
 	}
 
 	public Planina getPlanina() {

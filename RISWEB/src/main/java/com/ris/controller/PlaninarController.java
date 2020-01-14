@@ -1,8 +1,8 @@
 package com.ris.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ris.repository.DomRepository;
+import com.ris.repository.PlaninaRepository;
 import com.ris.repository.PlaninarRepository;
 
+import model.Dom;
+import model.Planina;
 import model.Planinar;
 
 @Controller
@@ -21,10 +25,16 @@ public class PlaninarController {
 	@Autowired
 	PlaninarRepository pr;
 	
+	@Autowired
+	PlaninaRepository plr;
+	
+	@Autowired
+	DomRepository dr;
+	
 	@RequestMapping(value="/logPlaninar", method = RequestMethod.POST)
-	public String addPlaninar(String ime, String prezime, HttpServletRequest request,Model m) {
+	public String addPlaninar(String ime, String clanskibroj, HttpServletRequest request,Model m) {
 		
-		Planinar p = pr.findByImePrezime(ime, prezime);
+		Planinar p = pr.findByImeClanskiBr(ime, clanskibroj);
 		if(p==null) {
 			m.addAttribute("poruka", "Ne postoji dati korisnik");
 			return "index";
@@ -34,14 +44,28 @@ public class PlaninarController {
 		return "planinar/firstpage";
 	}
 	
-	@RequestMapping(value="/Planinar", method = RequestMethod.GET)
-	public String addPlaninar() {
+	@RequestMapping(value="/getPlanine", method = RequestMethod.GET)
+	public String getPlanine(HttpServletRequest request) {
+		List<Planina> planine = plr.findAll();
 		
-		return "planinar/druga";
+		request.getSession().setAttribute("planine", planine);
+
+		return "planinar/planine";
 	}
-	@RequestMapping(value="/Planinarl", method = RequestMethod.GET)
-	public String addPlaninarl(HttpSession session) {
-		session.invalidate();
-		return "planinar/druga";
+	
+	@RequestMapping(value = "/getDomoviPlanine", method = RequestMethod.GET)
+	public String getDomPlanine(String planina, HttpServletRequest request, Model m) {
+		Integer idDom = Integer.parseInt(planina);
+		
+		Planina p = plr.findById(idDom).get();
+		
+		List<Dom> domovi = dr.findByPlanina(p);
+		
+		request.getSession().setAttribute("domovi", domovi);
+		request.getSession().setAttribute("planina", p);
+		
+		m.addAttribute("poruka", "planine " + p.getIme());
+		
+		return "planinar/domoviPlanine";
 	}
 }

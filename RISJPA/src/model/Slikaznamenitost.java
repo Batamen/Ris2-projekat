@@ -15,25 +15,24 @@ public class Slikaznamenitost implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idSlika;
+	private int idSlikaZnamenitost;
 
 	@Lob
 	private String path;
 
 	//bi-directional many-to-one association to Znamenitost
 	@ManyToOne
-	@JoinColumn(name="idZnamenitost")
 	private Znamenitost znamenitost;
 
 	public Slikaznamenitost() {
 	}
 
-	public int getIdSlika() {
-		return this.idSlika;
+	public int getIdSlikaZnamenitost() {
+		return this.idSlikaZnamenitost;
 	}
 
-	public void setIdSlika(int idSlika) {
-		this.idSlika = idSlika;
+	public void setIdSlikaZnamenitost(int idSlikaZnamenitost) {
+		this.idSlikaZnamenitost = idSlikaZnamenitost;
 	}
 
 	public String getPath() {

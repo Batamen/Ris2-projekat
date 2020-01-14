@@ -17,14 +17,15 @@ public class Komentar implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idKomentar;
 
+	@Lob
+	private String opis;
+
 	//bi-directional many-to-one association to Planinar
 	@ManyToOne
-	@JoinColumn(name="idPlaninar")
 	private Planinar planinar;
 
 	//bi-directional many-to-one association to Znamenitost
 	@ManyToOne
-	@JoinColumn(name="idZnamenitost")
 	private Znamenitost znamenitost;
 
 	public Komentar() {
@@ -36,6 +37,14 @@ public class Komentar implements Serializable {
 
 	public void setIdKomentar(int idKomentar) {
 		this.idKomentar = idKomentar;
+	}
+
+	public String getOpis() {
+		return this.opis;
+	}
+
+	public void setOpis(String opis) {
+		this.opis = opis;
 	}
 
 	public Planinar getPlaninar() {
