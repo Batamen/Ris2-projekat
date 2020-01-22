@@ -12,10 +12,20 @@
 	<div class="w3-container w3-teal w3-center">
 		<h1 class="w3-opacity"><b>Domovi planine ${planina.ime }</b></h1>
 	</div>
-	<div class="w3-container">
+	<table class="w3-table w3-striped w3-bordered">
+		<tr>
+			<th>Naziv doma</th>
+			<th>Slobodna mesta u domu</th>
+			<th>Opis</th>
+		</tr>
 		<c:forEach items="${domovi }" var="d">
-			<p>${d.opis }</p>
+			<tr>
+				<td>${d.naziv }</td>
+				<td>${d.kapacitet }</td>
+				<td>${d.opis }</td>
+				<td><a href="/Ris/PlaninarController/reservationPage?dom=${d.idDom }">Rezervisi</a></td>
+			</tr>
 		</c:forEach>
-	</div>
+	</table>
 </body>
 </html>

@@ -38,7 +38,7 @@ public class Planinar implements Serializable {
 	private List<Portal> portals;
 
 	//bi-directional many-to-one association to Rezervacija
-	@OneToMany(mappedBy="planinar")
+	@OneToMany(mappedBy="planinar", fetch=FetchType.EAGER)
 	private List<Rezervacija> rezervacijas;
 
 	//bi-directional many-to-one association to Termin
