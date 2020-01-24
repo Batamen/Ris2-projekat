@@ -15,7 +15,10 @@
 		</c:if>
 	</div>
 	<div class="w3-container w3-light-blue w3-center">
-	<pre><a href="/Ris/PlaninarController/getPlanine">Planine</a>				<a href=#>IZABERI</a>				<a href=#>IZABERI</a>				<a href=#>IZABERI</a>				<a href=#>IZABERI</a></pre>
+	<pre><a href="/Ris/PlaninarController/getPlanine">Planine</a>				<a href="/Ris/PlaninarController/getPlaninari">Planinari</a>				<a href="/Ris/PlaninarController/getProfil">Profil</a></pre>
 	</div>
+	<c:if test="${!empty poruka }">
+		Cestitam na rezervaciji
+	</c:if>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,20 +11,20 @@
 </head>
 <body>
 	<div class="w3-container w3-teal w3-center">
-		<h1 class="w3-opacity"><b>Domovi planine ${planina.ime }</b></h1>
+	<h1 class="w3-opacity"><b>Planine</b></h1>
 	</div>
 	<table class="w3-table w3-striped w3-bordered">
+		
 		<tr>
-			<th>Naziv doma</th>
-			<th>Slobodna mesta u domu</th>
-			<th>Opis</th>
+			<th>Ime</th>
+			<th>Prezime</th>
+			<th>Portal</th>
 		</tr>
-		<c:forEach items="${domovi }" var="d">
+		<c:forEach items="${planinari }" var="p">
 			<tr>
-				<td>${d.naziv }</td>
-				<td>${d.kapacitet }</td>
-				<td>${d.opis }</td>
-				<td><a href="/Ris/PlaninarController/reservationPage?dom=${d.idDom }">Rezervisi</a></td>
+				<td>${p.ime }</td>
+				<td>${p.prezime }</td>
+				<td><a href="/Ris/PlaninarController/getPortal?planinar=${p.idPlaninar }">Prikazi portal</a></td>
 			</tr>
 		</c:forEach>
 	</table>
