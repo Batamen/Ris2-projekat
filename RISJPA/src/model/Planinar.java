@@ -1,8 +1,19 @@
 package model;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 
 /**
@@ -30,19 +41,23 @@ public class Planinar implements Serializable {
 	private String prezime;
 
 	//bi-directional many-to-one association to Komentar
-	@OneToMany(mappedBy="planinar")
+	@OneToMany(mappedBy="planinar", fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Komentar> komentars;
 
 	//bi-directional many-to-one association to Portal
-	@OneToMany(mappedBy="planinar")
+	@OneToMany(mappedBy="planinar", fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Portal> portals;
 
 	//bi-directional many-to-one association to Rezervacija
 	@OneToMany(mappedBy="planinar", fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Rezervacija> rezervacijas;
 
 	//bi-directional many-to-one association to Termin
-	@OneToMany(mappedBy="planinar")
+	@OneToMany(mappedBy="planinar", fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Termin> termins;
 
 	public Planinar() {

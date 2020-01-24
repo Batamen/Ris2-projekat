@@ -21,6 +21,7 @@
 			<th>Tip</th>
 			<th>Slike</th>
 			<th>Unesite komentar</th>
+			<th>Rezervacija</th>
 		</tr>
 		
 			<tr>
@@ -34,6 +35,9 @@
 						<textarea rows="10" cols="40" name="komentar"></textarea><br>
 						<input type="submit" value="komentarisi">
 					</form>
+				</td>
+				<td>
+					<a href="/Ris/PlaninarController/reservationTermin?znamenitost=${z.idZnamenitost }">Rezervisi</a>
 				</td>
 			</tr>
 			</table>

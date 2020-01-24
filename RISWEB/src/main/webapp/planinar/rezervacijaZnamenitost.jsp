@@ -10,10 +10,10 @@
 </head>
 <body>
 <div class="w3-container w3-teal w3-center">
-	<h1 class="w3-opacity"><b>${planinar.ime } rezervisite ${dom.naziv }</b></h1>
+	<h1 class="w3-opacity"><b>${planinar.ime } rezervisite ${znamenitost.tip } na ${planina.ime }</b></h1>
 </div>
 <div class="w3-container w3-center">
-	<form action="/Ris/PlaninarController/rezervisi" method="post">
+	<form action="/Ris/PlaninarController/rezervisiZ" method="post">
 	Unesite datum kada zelite da rezervisete   <input type="date" name="datum"><br>
 	<input type="submit" value="Rezervisi">
 	</form>

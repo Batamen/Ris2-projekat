@@ -31,12 +31,11 @@
 		</c:forEach>
 	</table>
 	<br>
-	<form action="#" method="get" enctype = "multipart/form-data">
-		<textarea rows="10" cols="100"></textarea><br>
+	<form action="/Ris/PlaninarController/sacuvajPortal" method="post" enctype = "multipart/form-data">
+		<textarea rows="10" cols="100" name="tekst"></textarea><br>
 		<input type="file" name="picture" size="50">
 		<input type="submit" value="Zakaci post">
 	</form>
-	<c:if test="${!empty postovi }"></c:if>
 </div>
 </body>
 </html>
