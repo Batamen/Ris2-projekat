@@ -14,7 +14,7 @@
 	<h1 class="w3-opacity"><b>Portal</b></h1>
 	</div>
 	<table class="w3-table w3-striped w3-bordered">
-		
+		<p class="w3-center"><a href="/Ris/IzvestajController/generisi?planinar=${portali[0].planinar.idPlaninar }">Generisi izvestaj</a></p>
 		<tr>
 			<th>Planinar</th>
 			<th>Iskustva</th>
