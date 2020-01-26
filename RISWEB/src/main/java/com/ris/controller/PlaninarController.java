@@ -130,7 +130,15 @@ public class PlaninarController {
 	
 	@RequestMapping(value = "/rezervisi", method = RequestMethod.POST)
 	public String rezervisi(Date datum, HttpServletRequest request, Model m) {
+		if(datum.compareTo(new Date())<0) {
+			m.addAttribute("poruka","Uneli ste datum koji je vec prosao!");
+			return "planinar/rezervacija";
+		}
 		Dom d= (Dom) request.getSession().getAttribute("dom");
+		if(d.getKapacitet()<=0) {
+			m.addAttribute("poruka", "Nije uspesna rezervacija");
+			return "planinar/firstpage";
+		}
 		Planinar p = (Planinar) request.getSession().getAttribute("planinar");
 		Rezervacija rezervacija = new Rezervacija();
 		rezervacija.setDatum(datum);
@@ -139,7 +147,10 @@ public class PlaninarController {
 		Rezervacija proba = rr.save(rezervacija);
 		p.getRezervacijas().add(rezervacija);
 		if(proba != null) {
+			dr.updateDom(d);
+			d.setKapacitet(d.getKapacitet()-1);
 			m.addAttribute("poruka", "Rezervisali ste mesto za dom u terminu:" + rezervacija.getDatum());
+			request.getSession().setAttribute("dom", d);
 			request.getSession().setAttribute("planinar", p);
 		} else {
 			m.addAttribute("poruka", "Nije uspesna rezervacija");
@@ -200,7 +211,11 @@ public class PlaninarController {
 	}
 	
 	@RequestMapping(value="/rezervisiZ", method = RequestMethod.POST)
-	public String rezervisiZ(HttpServletRequest request, Date datum) {
+	public String rezervisiZ(HttpServletRequest request, Date datum, Model m) {
+		if(datum.compareTo(new Date())<0) {
+			m.addAttribute("poruka","Uneli ste datum koji je vec prosao!");
+			return "planinar/rezervacijaZnamenitost";
+		}
 		Znamenitost z = (Znamenitost) request.getSession().getAttribute("znamenitost");
 		Planinar p = (Planinar) request.getSession().getAttribute("planinar");
 		Termin termin = new Termin();

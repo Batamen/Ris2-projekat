@@ -17,6 +17,7 @@
 	Unesite datum kada zelite da rezervisete   <input type="date" name="datum"><br>
 	<input type="submit" value="Rezervisi">
 	</form>
+	<h3>${poruka }</h3>
 </div>
 </body>
 </html>

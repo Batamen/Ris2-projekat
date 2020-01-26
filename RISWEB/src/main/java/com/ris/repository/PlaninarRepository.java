@@ -10,4 +10,6 @@ public interface PlaninarRepository extends JpaRepository<Planinar, Integer> {
 
 	@Query("SELECT p FROM Planinar p WHERE p.ime=:ime and p.clanskibroj=:clanskibroj")
 	public Planinar findByImeClanskiBr(@Param("ime")String ime,@Param("clanskibroj") String clanskibroj);
+	
+	public Planinar findByIme(String ime);
 }

@@ -15,7 +15,7 @@
 	<table class="w3-table w3-striped w3-bordered">
 		<tr>
 			<th>Naziv doma</th>
-			<th>Slobodna mesta u domu</th>
+			<th>Slobodna mesta</th>
 			<th>Opis</th>
 		</tr>
 		<c:forEach items="${domovi }" var="d">
