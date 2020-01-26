@@ -147,7 +147,7 @@ public class PlaninarController {
 		Rezervacija proba = rr.save(rezervacija);
 		p.getRezervacijas().add(rezervacija);
 		if(proba != null) {
-			dr.updateDom(d);
+			dr.updateDomMinus(d);
 			d.setKapacitet(d.getKapacitet()-1);
 			m.addAttribute("poruka", "Rezervisali ste mesto za dom u terminu:" + rezervacija.getDatum());
 			request.getSession().setAttribute("dom", d);
@@ -170,6 +170,9 @@ public class PlaninarController {
 		Planinar p = (Planinar) request.getSession().getAttribute("planinar");
 		p.setRezervacijas(rr.findByPlaninar(p));
 		request.getSession().setAttribute("planinar", p);
+		Dom d = r.getDom();
+		d.setKapacitet(d.getKapacitet()+1);
+		dr.updateDomPlus(d);
 		return "planinar/profil";
 	}
 	@RequestMapping(value="/getStazePlanine", method = RequestMethod.GET)

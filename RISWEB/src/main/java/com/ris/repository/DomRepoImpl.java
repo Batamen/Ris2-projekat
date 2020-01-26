@@ -16,7 +16,7 @@ public class DomRepoImpl implements DomRepo{
 	EntityManager em;
 
 	@Override
-	public boolean updateDom(Dom d) {
+	public boolean updateDomPlus(Dom d) {
 		int n=em.createQuery("UPDATE Dom SET kapacitet= :kapacitet where IdDom = :idDom").setParameter("kapacitet", d.getKapacitet()-1)
 			.setParameter("idDom", d.getIdDom()).executeUpdate();
 		if (n == 0)
@@ -24,4 +24,14 @@ public class DomRepoImpl implements DomRepo{
 		else
 			return true;
 	}
+
+	@Override
+	public boolean updateDomMinus(Dom d)  {
+		int n=em.createQuery("UPDATE Dom SET kapacitet= :kapacitet where IdDom = :idDom").setParameter("kapacitet", d.getKapacitet()+1)
+				.setParameter("idDom", d.getIdDom()).executeUpdate();
+			if (n == 0)
+				return false;
+			else
+				return true;
+		}
 }
