@@ -18,7 +18,7 @@
 	<pre><a href="/Ris/PlaninarController/getPlanine">Planine</a>				<a href="/Ris/PlaninarController/getPlaninari">Planinari</a>				<a href="/Ris/PlaninarController/getProfil">Profil</a></pre>
 	</div>
 	<c:if test="${!empty poruka }">
-		Cestitam na rezervaciji
+		<h3 class="w3-center">Cestitam na rezervaciji</h3>
 	</c:if>
 </body>
 </html>
